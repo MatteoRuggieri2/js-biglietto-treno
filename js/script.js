@@ -23,24 +23,39 @@
 // INPUT
 // km request
 const userKmTravel = parseInt( prompt('Quanti chilometri devi percorrere?') );
-console.log('Km del viaggio: ' , userKmTravel);
 
 // userAge request
 const userAge = parseInt( prompt('Quanti anni hai?') );
-console.log('Età dell\'utente: ' , userAge);
+
+
 
 // LOGIC
 // Travel Price
-const travelPrice = ( userKmTravel * 0.21 );
-console.log('Prezzo del viaggio: ' , travelPrice);
+let travelPrice = ( userKmTravel * 0.21 );
 
 // Discounts
+// 20%
+let discount20 = ( travelPrice * 20) / 100
+
+// 40%
+let discount40 = ( travelPrice * 40) / 100
+
+// Variable - Final Price
+let finalPrice;
+
 if( userAge < 18 ) {
-    console.log('sei minorenne');
+    finalPrice = (travelPrice - discount20)
+
 } else if( userAge > 65) {
-    console.log('sei over 65');
+    finalPrice = (travelPrice - discount40)
+
 } else {
-    console.log('sei maggiorenne');
+    finalPrice = travelPrice
+
 }
 
+
+
 // OUTPUT
+// Message - Final Price
+alert('L\'importo da pagare è di:   € ' + finalPrice.toFixed(2));
